@@ -9,7 +9,8 @@ describe OysterCard do
    oystercard = OysterCard.new(0)
    expect(oystercard.balance).to eq(0)
  end
-
+end
+describe 'top_up' do
  it 'can add a new balance and top up the oystercard ' do
    oystercard = OysterCard.new(0)
    expect{oystercard.top_up(10)}.to change {oystercard.balance}.from(0).to(10)
@@ -20,4 +21,26 @@ describe OysterCard do
  LIMIT = 90
  expect{oystercard.top_up(100)}.to raise_error "Maximum balance  of #{LIMIT} exceeded"
 end
+end
+
+describe 'deduct' do
+  it 'can deduct money from the oystercard' do
+    oystercard = OysterCard.new(50)
+    expect{oystercard.deduct(20)}.to change {oystercard.balance}.from(50).to(30)
+  end
+
+describe 'in_journey?' do
+  it 'can respond to the method in_journey' do
+    oystercard = OysterCard.new(0)
+    expect(oystercard).to respond_to(:in_journey?)
+  end
+
+  it 'touch_in can change the card state' do
+   oystercard = OysterCard.new(0)
+   expect{oystercard.touch_in}.to change{oystercard.card_state}.from(false).to(true)
+  end
+
+end
+
+
 end

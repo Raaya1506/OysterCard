@@ -14,4 +14,10 @@ describe OysterCard do
    oystercard = OysterCard.new(0)
    expect{oystercard.top_up(10)}.to change {oystercard.balance}.from(0).to(10)
  end
+
+ it 'should raise an error when balance becomes more than £90' do
+ oystercard = OysterCard.new(0)
+ LIMIT = 90
+ expect{oystercard.top_up(100)}.to raise_error "Maximum balance  of #{LIMIT} exceeded"
+end
 end

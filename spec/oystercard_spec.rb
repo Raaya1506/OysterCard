@@ -40,7 +40,9 @@ describe 'in_journey?' do
    expect{oystercard.touch_in}.to change{oystercard.card_state}.from(false).to(true)
   end
 
-end
-
-
+  it 'touch_out can change the method in_journey' do
+    oystercard = OysterCard.new(0,true)
+    expect{oystercard.touch_out}.to change{oystercard.card_state}.from(true).to(false)
+  end
+  end
 end

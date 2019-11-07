@@ -21,6 +21,14 @@ class OysterCard
 
   def in_journey?
 
+
   end
 
+  def touch_in
+    @card_state = true
+  end
+
+  def touch_out
+    @card_state = false
+  end
 end
